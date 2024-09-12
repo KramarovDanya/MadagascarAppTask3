@@ -1,18 +1,18 @@
 package Animals;
 
-import Food.Plant;
+import Animals.interfases.Running;
+import Animals.interfases.Speaking;
 
 public class Puma extends Predator implements Speaking, Running {
     String sound = "rrr";
-    public Puma(){
-        this.name = "Puma";
-        this.weight = 20;
-        this.MaxWeight = 22;
-    }
-    public Puma(String name, int weight, int MaxWeight){
-        this.name = name;
-        this.MaxWeight = MaxWeight;
-        this.weight = weight;
+
+    private int maxWeight = 22;
+
+    public Puma(String name, int weight) throws IllegalAccessException {
+        super(name,weight);
+
+        checkWeight(weight, maxWeight);
+
     }
 
     @Override
@@ -21,5 +21,5 @@ public class Puma extends Predator implements Speaking, Running {
     }
 
     @Override
-    public void Run() { System.out.println("Пума бежит");}
+    public void Run() { System.out.printf("Пума %s бежит \n",name);}
 }

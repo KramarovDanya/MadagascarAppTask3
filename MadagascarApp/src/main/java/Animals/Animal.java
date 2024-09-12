@@ -6,11 +6,22 @@ import MyException.WrongFoodException;
 import java.util.Objects;
 
 public abstract class Animal {
-    protected String name = "it animal";
-    protected int MaxWeight = 50;
-    protected int weight = 1;
 
+
+    protected String name = "it animal";
+    protected int weight;
+    public Animal(String name, int weight){
+        this.name = name;
+        this.weight = weight;
+    }
+
+    protected void  checkWeight(int weight, int maxWeight) throws IllegalAccessException {
+        if (weight > maxWeight) {
+            throw new IllegalAccessException("Вес не может быть больше максимального веса =" + maxWeight);
+        }
+    }
     private void Move(){};
+
     public String GetName(){
         return name;
     };
@@ -35,6 +46,8 @@ public abstract class Animal {
     public int hashCode(){
         return Objects.hash(name);
     }
+
+
 
 
 }

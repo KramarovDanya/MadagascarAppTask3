@@ -1,18 +1,17 @@
 package Animals;
 
-public class Fish extends Herbivore implements Floating{
-    int MaxWeight = 5;
-    public Fish(){
-        this.name = "Fish";
-        this.weight = 2;
-    }
-    public Fish(String name, int weight, int MaxWeight){
-        this.name = name;
-        this.MaxWeight = MaxWeight;
-        this.weight = weight;
+import Animals.interfases.Swimming;
+
+public class Fish extends Herbivore implements Swimming {
+    private int maxWeight = 5;
+
+    public Fish(String name, int weight) throws IllegalAccessException {
+        super(name,weight);
+
+        checkWeight(weight, maxWeight);
     }
     @Override
-    public void Float() {
-        System.out.println("Рыба плывет");
+    public void Swim() {
+        System.out.printf("Рыба %s плывет \n", name);
     }
 }

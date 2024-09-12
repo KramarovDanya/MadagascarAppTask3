@@ -1,17 +1,15 @@
 package Animals;
 
-public class Tiger extends Predator implements Speaking, Running{
-    int MaxWeight = 33;
+import Animals.interfases.Running;
+import Animals.interfases.Speaking;
 
-    public Tiger(){
-        this.name = "Tiger";
-        this.weight = 30;
-        this.MaxWeight = 35;
-    }
-    public Tiger(String name, int weight, int MaxWeight){
-        this.name = name;
-        this.MaxWeight = MaxWeight;
-        this.weight = weight;
+public class Tiger extends Predator implements Speaking, Running {
+    int maxWeight  = 35;
+
+
+    public Tiger(String name, int weight) throws IllegalAccessException {
+        super(name, weight);
+        checkWeight(weight, maxWeight);
     }
     private String sound = "aRRR";
     @Override
@@ -21,6 +19,6 @@ public class Tiger extends Predator implements Speaking, Running{
 
     @Override
     public void Run() {
-        System.out.println("Тигр бежит");
+        System.out.printf("Тигр %s бежит\n", name);
     }
 }
